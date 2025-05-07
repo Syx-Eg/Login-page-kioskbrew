@@ -1,13 +1,14 @@
+<?php include 'auth_handler.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Page</title>
-
-  <!-- Irish Grover font for title -->
+    <title>Login Page</title>
+      <!-- Irish Grover font for title -->
   <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 
-  <style>
-    body {
+<style>
+  body {
       margin: 0;
       background-color: #ffd180; /* Light orange-yellow background */
       font-family: Arial, sans-serif;
@@ -58,76 +59,75 @@
       font-size: 14px;
     }
 
-    /* Input boxes */
-    input[type="text"], input[type="password"] {
-      width: 95%;
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      margin-top: 5px;
-    }
-
-    /* Forgot password text */
-    .forgot {
-      text-align: right;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-      .forgot a {
-      text-decoration: underline;
-      color: black;
-
-      }
-        
-        .login-button {
-        padding: 8px 20px;
-        font-size: 14px;
-        background-color: #007bff; /* nice, clean blue */
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        display: block;
-        margin: 20px auto 0 auto;
-        transition: background-color 0.3s;
-      }
-
-      .login-button:hover {
-      background-color: #0056b3; /* darker blue on hover */
-    }
-
-
-  </style>
+    {
+     background-color: #f4c471;
+     font-family: Arial, sans-serif;
+     }
+        .login-container {
+            background-color: #b88c4a;
+            padding: 30px;
+            margin: 100px auto;
+            width: 600px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: #000;
+        }
+        input[type="email"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+        .forgot {
+            font-size: 12px;
+            color: #0000ee;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="login-container">
+        <h2>COFFEE&CO. CAFE</h2>
+        <h3>BREweB</h3>
 
-  <div class="login-box">
-    <!-- Header bar -->
-    <div class="top-bar">
-      COFFEE&CO.
-      <span>CAFE</span>
+        <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
+
+        <!-- Staff login form -->
+        <form method="POST" action="">
+            <label>EMAIL ADDRESS</label><br>
+            <input type="email" name="email" placeholder="Enter your email" required><br>
+
+            <label>PASSWORD</label><br>
+            <input type="password" name="password" placeholder="Enter your password" required><br>
+
+            <a class="forgot" href="#">Forgot password?</a><br><br>
+
+            <button type="submit" name="login" class="btn">Staff Login</button>
+        </form>
+
+        <!-- Guest login form -->
+        <form method="POST" action="">
+            <button type="submit" name="guest" class="btn">Continue as Guest</button>
+        </form>
     </div>
-
-    <!-- Title -->
-    <div class="login-title">BREweB</div>
-    
-    <!-- Login form -->
-    <form>
-      <label>EMAIL ADDRESS</label>
-      <input type="text" placeholder="Enter your email">
-
-      <label>PASSWORD</label>
-      <input type="password" placeholder="Enter your password">
-
-      <div class="forgot">
-        <a href="#" style="color: blue;">Forgot password?</a>
-
-      <button type="submit" class="login-button">LOGIN</button>
-    </form>
-  </div>
-
 </body>
 </html>
